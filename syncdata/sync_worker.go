@@ -5,9 +5,15 @@ import (
 )
 
 // SyncAction actions and data
-type SyncAction interface {
+type SyncData interface {
 	GetData() interface{}
-	GetAction() Action
+}
+
+type SyncActions interface {
+	AddAction(sd SyncData, position int)
+	ReplaceAction(sd SyncData, position int)
+	DeleteAction(position int)
+	MoveAction(fromPosition int, toPosition int)
 }
 
 //SyncWorker synchs some stuff
@@ -15,11 +21,28 @@ type SyncWorker struct {
 	data []interface{}
 }
 
-func (s *SyncWorker) processAction(sa SyncAction) {
-	if sa.GetAction() == ADD {
-		s.data = append(s.data, sa.GetData())
-	}
-	// var data = make([]interface{}, 20)
+// AddAction - action to add
+func (s *SyncWorker) AddAction(sd SyncData, position int) {
+	s.data = append(s.data, sd.GetData())
+}
+
+// ReplaceAction - action to replace
+func (s *SyncWorker) ReplaceAction(sd SyncData, position int) {
+	s.data[position] = sd.GetData()
+}
+
+// DeleteAction - action to delete
+func (s *SyncWorker) DeleteAction(position int) {
+	s.data = append(s.data[:position], s.data[position+1:]...)
+}
+
+// MoveAction - action to delete
+func (s *SyncWorker) MoveAction(fromPosition int, toPosition int) {
+	data := s.data[fromPosition]
+	copy(s.data[fromPosition+1:], s.data[fromPosition:])
+	copy(s.data[toPosition:], s.data[toPosition+1:])
+
+	s.data[toPosition] = data
 }
 
 // GetDataList Return the data
