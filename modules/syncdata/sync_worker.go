@@ -18,35 +18,35 @@ type SyncActions interface {
 
 //SyncWorker synchs some stuff
 type SyncWorker struct {
-	data []interface{}
+	Data []interface{}
 }
 
 // AddAction - action to add
 func (s *SyncWorker) AddAction(sd SyncData, position int) {
-	s.data = append(s.data, sd.GetData())
+	s.Data = append(s.Data, sd.GetData())
 }
 
 // ReplaceAction - action to replace
 func (s *SyncWorker) ReplaceAction(sd SyncData, position int) {
-	s.data[position] = sd.GetData()
+	s.Data[position] = sd.GetData()
 }
 
 // DeleteAction - action to delete
 func (s *SyncWorker) DeleteAction(position int) {
-	s.data = append(s.data[:position], s.data[position+1:]...)
+	s.Data = append(s.Data[:position], s.Data[position+1:]...)
 }
 
 // MoveAction - action to delete
 func (s *SyncWorker) MoveAction(fromPosition int, toPosition int) {
-	data := s.data[fromPosition]
-	copy(s.data[fromPosition+1:], s.data[fromPosition:])
-	copy(s.data[toPosition:], s.data[toPosition+1:])
+	data := s.Data[fromPosition]
+	copy(s.Data[fromPosition+1:], s.Data[fromPosition:])
+	copy(s.Data[toPosition:], s.Data[toPosition+1:])
 
-	s.data[toPosition] = data
+	s.Data[toPosition] = data
 }
 
 // GetDataList Return the data
 func (s SyncWorker) GetDataList() []interface{} {
-	fmt.Println("data: ", s.data)
-	return s.data
+	fmt.Println("data: ", s.Data)
+	return s.Data
 }
