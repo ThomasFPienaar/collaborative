@@ -1,8 +1,8 @@
 package application
 
 import (
-	"github.com/thomas/collaborative/modules"
-	"github.com/thomas/collaborative/application/httplayer"
+	"github.com/ThomasFPienaar/collaborative/modules"
+	"github.com/ThomasFPienaar/collaborative/application/httplayer"
 )
 
 func InitApplication() {

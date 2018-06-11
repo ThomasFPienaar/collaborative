@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/thomas/collaborative/application"
+	"github.com/ThomasFPienaar/collaborative/application"
 )
 
 func main() {
