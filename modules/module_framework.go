@@ -1,8 +1,8 @@
 package modules
 
 import (
-	"github.com/thomas/collaborative/application/httplayer"
-	"github.com/thomas/collaborative/modules/syncdata"
+	"github.com/ThomasFPienaar/collaborative/application/httplayer"
+	"github.com/ThomasFPienaar/collaborative/modules/syncdata"
 )
 
 func LoadModules() {

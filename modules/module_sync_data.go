@@ -2,7 +2,7 @@ package modules
 
 import (
 	"net/http"
-	"github.com/thomas/collaborative/modules/syncdata"
+	"github.com/ThomasFPienaar/collaborative/modules/syncdata"
 )
 
 type ModuleSyncData struct {
