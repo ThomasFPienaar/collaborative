@@ -1,2 +1,5 @@
 debug
 syncdata/debug.test
+.idea
+./idea/*
+.idea/collaborative.iml
